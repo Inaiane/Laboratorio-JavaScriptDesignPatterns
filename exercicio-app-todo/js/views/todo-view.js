@@ -53,6 +53,7 @@ var app = app || {};
 			this.$el.html(this.template(this.model.toJSON()));
 			this.$el.toggleClass('completed', this.model.get('completed'));
 			this.$el.toggleClass('priority', this.model.get('priority'));
+			this.$el.toggleClass('excluded', this.model.get('excluded'));
 			this.toggleVisible();
 			this.$input = this.$('.edit');
 			return this;
@@ -134,7 +135,9 @@ var app = app || {};
 
 		// Remove the item, destroy the model from *localStorage* and delete its view.
 		clear: function () {
-			this.model.destroy();
+			//this.model.destroy();
+			this.model.toggleExcluded();
+		
 		}
 	});
 })(jQuery);

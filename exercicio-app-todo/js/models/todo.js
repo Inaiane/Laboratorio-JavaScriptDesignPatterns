@@ -14,14 +14,21 @@ var app = app || {};
 		defaults: {
 			title: '',
 			completed: false,
-			priority: false
+			priority: false,
+			excluded: false,
+			level: ' ---normal'
 		},
 
 		// Toggle the `priority` state of this todo item.
 		togglePriority: function () {
 			this.save({
-				priority: !this.get('priority'),
-				level: 'important'
+				priority: !this.get('priority')
+			});
+		},
+
+		toggleExcluded: function () {
+			this.save({
+				completed: !this.get('excluded')
 			});
 		},
 
